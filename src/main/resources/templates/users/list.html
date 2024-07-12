@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layouts/default">
+<head th:replace ="fragments:: head">
+</head>
+<body>
+<div class="container text-center">
+    <h1 class="bg-primary py-4">Users List</h1>
+    <div th:replace="fragments:: menu"></div>
+    <div>
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>User Name</th>
+                    <th>E-mail</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="user: ${listUsers}">
+                    <tr>
+                        <td>[[${user.id}]]</td>
+                        <td>[[${user.userName}]]</td>
+                        <td>[[${user.email}]]</td>
+                        <td>
+                            <a th:href="@{'edit/' + ${user.id}}" class="btn btn-primary">Edit</a>
+                            <a th:href="@{'delete/' + ${user.id}}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                </th:block>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

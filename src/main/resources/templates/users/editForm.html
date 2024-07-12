@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layouts/default">
+<head th:replace ="fragments:: head">
+</head>
+<body>
+<div class="container">
+    <h1 class="bg-primary py-4 text-center">Add User</h1>
+    <div th:replace="fragments:: menu"></div>
+
+    <form th:action="@{/users/update}" method="post" th:object="${userForm}">
+        <div>
+            <input type="hidden" th:field="*{id}" name="id" class="form-control"/>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label">User Name: </label>
+            <input type="text" th:field="*{userName}" name="user_name" class="form-control"/>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label">E-mail: </label>
+            <input type="email" th:field="*{email}" name="email" class="form-control"/>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label">Password: </label>
+            <input type="password" th:field="*{password}" name="password" class="form-control"/>
+        </div>
+        <div>
+            <button class="btn btn-primary mt-5" type="sumit">Submit</button>
+        </div>
+
+    </form>
+
+</div>
+</body>
+</html>
